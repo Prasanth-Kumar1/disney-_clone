@@ -5,27 +5,33 @@ function Detail() {
     return (
         <Container>
             <Background>
-                <img src="/images/spider.jpeg" />
+                <img src="/images/spider.jpeg" alt="" />
             </Background>
             <ImageTitle>
-                <img src="/images/spiderman-title.png" />
+                <img src="/images/spiderman-title.png" alt="" />
             </ImageTitle>
             <Controls>
                 <PlayButton>
-                    <img src="/images/play-icon-black.png"/>
+                    <img src="/images/play-icon-black.png" alt="" />
                     <span>PLAY</span>
                 </PlayButton>
                 <TrailerButton>
-                    <img src="/images/play-icon-white.png"/>
+                    <img src="/images/play-icon-white.png" alt="" />
                     <span>Trailer</span>
                 </TrailerButton>
                 <AddButton>
                     <span>+</span>
                 </AddButton>
                 <GroupWatchButton>
-                    <img src="/images/group-icon.png" />
+                    <img src="/images/group-icon.png" alt="" />
                 </GroupWatchButton>
             </Controls>
+            <SubTitle>
+                 2018 ~ 7m ~ Family, Fantasy, Kids, Adventure
+            </SubTitle>
+            <Description>
+                "Spider-Verse" is a 2014 comic book storyline published by Marvel Comics. It features multiple alternative versions of Spider-Man that had appeared in various media, all under attack by Morlun and his family, the Inheritors.
+            </Description>
         </Container>
     )
 }
@@ -112,4 +118,16 @@ const AddButton = styled.button`
 `
 const GroupWatchButton = styled(AddButton)`
     background: rgb(0, 0, 0);  
+`
+const SubTitle = styled.div`
+    color: rgb(249, 249, 249);
+    font-size: 15px;
+    min-height: 20px;
+    margin-top: 26px;
+`
+const Description = styled.div`
+    line-height: 1.4;
+    font-size: 20px;
+    margin-top: 16px;
+    color: rgb(249, 249, 249); 
 `
