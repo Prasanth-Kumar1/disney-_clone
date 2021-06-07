@@ -20,10 +20,10 @@ function Detail() {
                     <span>Trailer</span>
                 </TrailerButton>
                 <AddButton>
-                
+                    <span>+</span>
                 </AddButton>
                 <GroupWatchButton>
-                
+                    <img src="/images/group-icon.png" />
                 </GroupWatchButton>
             </Controls>
         </Container>
@@ -68,6 +68,7 @@ const ImageTitle = styled.div`
 
 const Controls = styled.div`
     display: flex;
+    align-items: center;
 `
 const PlayButton = styled.button`
     border-radius: 4px;
@@ -93,8 +94,22 @@ const TrailerButton = styled(PlayButton)`
     text-transform: uppercase;
 `
 const AddButton = styled.button`
+    margin-right: 16px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
 
+    span {
+        font-size: 30px;
+        color: white;
+    }
 `
-const GroupWatchButton = styled.button`
-
+const GroupWatchButton = styled(AddButton)`
+    background: rgb(0, 0, 0);  
 `
