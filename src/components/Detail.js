@@ -1,37 +1,64 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
+import db from '../firebase'
 
 function Detail() {
+
+    const { id } = useParams();
+
+    const [movie, setMovie] = useState();
+
+    useEffect(() =>{
+        // Grab the movies info from the DB 
+        db.collection('movies')
+        .doc(id)
+        .get()
+        .then((doc)=>{
+            if(doc.exists){
+                // save the movie data
+                setMovie(doc.data());
+            } else {
+                // redirect to home page
+                
+            }
+        })
+    }, [])
+
     return (
         <Container>
-            <Background>
-                <img src="/images/spider.jpeg" alt="" />
-            </Background>
-            <ImageTitle>
-                <img src="/images/spiderman-title.png" alt="" />
-            </ImageTitle>
-            <Controls>
-                <PlayButton>
-                    <img src="/images/play-icon-black.png" alt="" />
-                    <span>PLAY</span>
-                </PlayButton>
-                <TrailerButton>
-                    <img src="/images/play-icon-white.png" alt="" />
-                    <span>Trailer</span>
-                </TrailerButton>
-                <AddButton>
-                    <span>+</span>
-                </AddButton>
-                <GroupWatchButton>
-                    <img src="/images/group-icon.png" alt="" />
-                </GroupWatchButton>
-            </Controls>
-            <SubTitle>
-                 2018 ~ 7m ~ Family, Fantasy, Kids, Adventure
-            </SubTitle>
-            <Description>
-                "Spider-Verse" is a 2014 comic book storyline published by Marvel Comics. It features multiple alternative versions of Spider-Man that had appeared in various media, all under attack by Morlun and his family, the Inheritors.
-            </Description>
+            {movie && (
+            <>
+                <Background>
+                    <img src={movie.backgroundImg} alt="" />
+                </Background>
+                <ImageTitle>
+                    <img src={movie.titleImg} alt="" />
+                </ImageTitle>
+                <Controls>
+                    <PlayButton>
+                        <img src="/images/play-icon-black.png" alt="" />
+                        <span>PLAY</span>
+                    </PlayButton>
+                    <TrailerButton>
+                        <img src="/images/play-icon-white.png" alt="" />
+                        <span>Trailer</span>
+                    </TrailerButton>
+                    <AddButton>
+                        <span>+</span>
+                    </AddButton>
+                    <GroupWatchButton>
+                        <img src="/images/group-icon.png" alt="" />
+                    </GroupWatchButton>
+                </Controls>
+                <SubTitle>
+                    {movie.subTitle}
+                </SubTitle>
+                <Description>
+                    {movie.description}
+                </Description>
+            </>
+            )}
         </Container>
     )
 }
