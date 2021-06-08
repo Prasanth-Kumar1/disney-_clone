@@ -5,37 +5,22 @@ import { useSelector } from 'react-redux'
 
 function Movies() {
 
+    // Grabbing data from the store.
     const movies = useSelector(selectMovies);
     console.log(movies);
 
+    // this functionality saying if movies exit go loop through it and get data 
     return (
         <Container>
             <h4>Recommended For You</h4>
             <Content>
-                <Wrap>
-                    <img src="/images/the-simpsons.jpeg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="/images/the-simpsons.jpeg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="/images/the-simpsons.jpeg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="/images/the-simpsons.jpeg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="/images/the-simpsons.jpeg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="/images/the-simpsons.jpeg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="/images/the-simpsons.jpeg" alt="" />
-                </Wrap>
-                <Wrap>
-                    <img src="/images/the-simpsons.jpeg" alt="" />
-                </Wrap>
+                { movies &&
+                    movies.map((movie) => (
+                        <Wrap key={ movie.id }>
+                            <img src={ movie.cardImg } alt="" />
+                        </Wrap>
+                    ))
+                }
             </Content>
         </Container>
     )
